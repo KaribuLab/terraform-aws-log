@@ -12,6 +12,7 @@ This module creates a straightforward Cloudwatch Log Group.
 
 ## Outputs
 
-| Name    | Type   | Description   |
-| ------- | ------ | ------------- |
-| log_arn | string | Log group ARN |
+| Name     | Type   | Description    |
+| -------- | ------ | -------------- |
+| log_arn  | string | Log group ARN  |
+| log_name | string | Log group name |

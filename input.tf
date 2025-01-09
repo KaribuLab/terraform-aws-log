@@ -3,6 +3,13 @@ variable log_name {
   description = "Log group name"
 }
 
+variable "for_lambda" {
+  type        = bool
+  default     = true
+  description = "Whether the log group is for a Lambda function"
+  
+}
+
 variable retention_in_days {
   type        = number
   default     = 30

@@ -21,3 +21,17 @@ variable common_tags {
   type        = map(string)
   description = "Common tags for all resources"
 }
+
+variable "metrics_namespace" {
+  description = "The namespace to use for metrics"
+  type        = string
+}
+
+variable "metrics_filter" {
+  description = "The filter pattern for extracting metric data out of ingested log events"
+  type = list(
+    object({
+      name      = string
+      pattern   = string
+  }))
+}

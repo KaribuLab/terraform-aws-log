@@ -1,7 +1,7 @@
 resource "aws_cloudwatch_log_group" "logs" {
-  name = var.for_lambda ? "/aws/lambda/${var.log_name}" : var.log_name
+  name              = var.for_lambda ? "/aws/lambda/${var.log_name}" : var.log_name
   retention_in_days = var.retention_in_days
-  tags = var.common_tags
+  tags              = var.common_tags
 }
 
 resource "aws_cloudwatch_log_metric_filter" "logs" {
@@ -11,8 +11,9 @@ resource "aws_cloudwatch_log_metric_filter" "logs" {
   log_group_name = aws_cloudwatch_log_group.logs.name
 
   metric_transformation {
-    name          = var.metrics_filter[count.index].name
-    namespace     = var.metrics_namespace
-    value         = "1"
+    name      = var.metrics_filter[count.index].metric_name
+    namespace = var.metrics_namespace
+    value     = var.metrics_filter[count.index].value != null ? var.metrics_filter[count.index].value : "1"
+    unit      = var.metrics_filter[count.index].unit
   }
 }

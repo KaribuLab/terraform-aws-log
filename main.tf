@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "<= 6.7.0"
+    }
+  }
+}
+
 resource "aws_cloudwatch_log_group" "logs" {
   name              = var.for_lambda ? "/aws/lambda/${var.log_name}" : var.log_name
   retention_in_days = var.retention_in_days

@@ -2,7 +2,6 @@ name: ci
 
 permissions:
   contents: write
-  workflows: write
 
 on:
   push:
